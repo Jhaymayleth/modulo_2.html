@@ -1,68 +1,68 @@
 import csv
 
-
-def guardar_csv(inventario, ruta, incluir_header=True):
+# archivos.py - Functions for saving and loading inventory data in CSV format.
+def save_csv(inventory, path, include_header=True):
     """Saves inventory to CSV."""
-    if not inventario:
-        print("No hay datos para guardar.")
+    if not inventory:
+        print("No data to save.")
         return
 
     try:
-        with open(ruta, "w", newline="", encoding="utf-8") as file:
+        with open(path, "w", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
 
-            if incluir_header:
-                writer.writerow(["nombre", "precio", "cantidad"])
+            if include_header:
+                writer.writerow(["name", "price", "quantity"])
 
-            for p in inventario:
-                writer.writerow([p["nombre"], p["precio"], p["cantidad"]])
+            for p in inventory:
+                writer.writerow([p["name"], p["price"], p["quantity"]])
 
-        print(f"Inventario guardado en: {ruta}")
+        print(f"Inventory saved to: {path}")
 
     except Exception as e:
-        print(f"Error al guardar archivo: {e}")
+        print(f"Error saving file: {e}")
 
-
-def cargar_csv(ruta):
+# Function to load inventory from CSV
+def load_csv(path):
     """Loads inventory from CSV."""
-    inventario = []
-    errores = 0
-
+    inventory = []
+    errors = 0
+# The function reads a CSV file, validates the data, and populates the inventory list. It counts invalid rows and returns both the inventory and the error count.
     try:
-        with open(ruta, "r", encoding="utf-8") as file:
+        with open(path, "r", encoding="utf-8") as file:
             reader = csv.reader(file)
 
             header = next(reader)
-            if header != ["nombre", "precio", "cantidad"]:
-                print("Encabezado inválido.")
+            if header != ["name", "price", "quantity"]:
+                print("Invalid header.")
                 return [], 0
 
-            for fila in reader:
+            for row in reader:
                 try:
-                    if len(fila) != 3:
+                    if len(row) != 3:
                         raise ValueError
 
-                    nombre = fila[0]
-                    precio = float(fila[1])
-                    cantidad = int(fila[2])
+                    name = row[0]
+                    price = float(row[1])
+                    quantity = int(row[2])
 
-                    if precio < 0 or cantidad < 0:
+                    if price < 0 or quantity < 0:
                         raise ValueError
 
-                    inventario.append({
-                        "nombre": nombre,
-                        "precio": precio,
-                        "cantidad": cantidad
+                    inventory.append({
+                        "name": name,
+                        "price": price,
+                        "quantity": quantity
                     })
 
                 except:
-                    errores += 1
+                    errors += 1
 
-        return inventario, errores
+        return inventory, errors
 
     except FileNotFoundError:
-        print("Archivo no encontrado.")
+        print("File not found.")
     except Exception as e:
-        print(f"Error al leer archivo: {e}")
+        print(f"Error reading file: {e}")
 
     return [], 0

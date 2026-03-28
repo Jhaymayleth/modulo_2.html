@@ -1,99 +1,101 @@
 from servicios import *
 from archivos import *
-
-inventario = []
-
+# app.py - Main application for the cash register inventory system.
+inventory = []
+# The main menu function controls the flow of the program, 
+# allowing users to manage their inventory and save/load data from CSV files. 
+# It includes error handling to ensure a smooth user experience.
 
 def menu():
-    continuar = True
+    running = True
 
-    while continuar:
-        print("\n=== INVENTARIO ===")
-        print("1. Agregar")
-        print("2. Mostrar")
-        print("3. Buscar")
-        print("4. Actualizar")
-        print("5. Eliminar")
-        print("6. Estadísticas")
-        print("7. Guardar CSV")
-        print("8. Cargar CSV")
-        print("9. Salir")
+    while running:
+        print("\n=== INVENTORY ===")
+        print("1. Add")
+        print("2. Show")
+        print("3. Search")
+        print("4. Update")
+        print("5. Delete")
+        print("6. Statistics")
+        print("7. Save CSV")
+        print("8. Load CSV")
+        print("9. Exit")
 
-        opcion = input("Opción: ")
+        option = input("Option: ")
 
         try:
-            if opcion == "1":
-                nombre = input("Nombre: ")
-                precio = float(input("Precio: "))
-                cantidad = int(input("Cantidad: "))
-                agregar_producto(inventario, nombre, precio, cantidad)
+            if option == "1":
+                name = input("Name: ")
+                price = float(input("Price: "))
+                quantity = int(input("Quantity: "))
+                add_product(inventory, name, price, quantity)
 
-            elif opcion == "2":
-                mostrar_inventario(inventario)
+            elif option == "2":
+                show_inventory(inventory)
 
-            elif opcion == "3":
-                nombre = input("Buscar: ")
-                p = buscar_producto(inventario, nombre)
-                print(p if p else "No encontrado")
+            elif option == "3":
+                name = input("Search: ")
+                p = search_product(inventory, name)
+                print(p if p else "Not found")
 
-            elif opcion == "4":
-                nombre = input("Producto a actualizar: ")
-                precio = input("Nuevo precio (Enter para omitir): ")
-                cantidad = input("Nueva cantidad (Enter para omitir): ")
+            elif option == "4":
+                name = input("Product to update: ")
+                price = input("New price (press Enter to skip): ")
+                quantity = input("New quantity (press Enter to skip): ")
 
-                actualizar_producto(
-                    inventario,
-                    nombre,
-                    float(precio) if precio else None,
-                    int(cantidad) if cantidad else None
+                update_product(
+                    inventory,
+                    name,
+                    float(price) if price else None,
+                    int(quantity) if quantity else None
                 )
 
-            elif opcion == "5":
-                nombre = input("Eliminar: ")
-                if eliminar_producto(inventario, nombre):
-                    print("Eliminado")
+            elif option == "5":
+                name = input("Delete: ")
+                if delete_product(inventory, name):
+                    print("Deleted")
                 else:
-                    print("No encontrado")
+                    print("Not found")
 
-            elif opcion == "6":
-                stats = calcular_estadisticas(inventario)
+            elif option == "6":
+                stats = calculate_statistics(inventory)
                 if stats:
                     print(stats)
                 else:
-                    print("Inventario vacío")
+                    print("Inventory is empty")
 
-            elif opcion == "7":
-                ruta = input("Ruta archivo: ")
-                guardar_csv(inventario, ruta)
+            elif option == "7":
+                path = input("File path: ")
+                save_csv(inventory, path)
 
-            elif opcion == "8":
-                ruta = input("Ruta archivo: ")
-                datos, errores = cargar_csv(ruta)
+            elif option == "8":
+                path = input("File path: ")
+                data, errors = load_csv(path)
 
-                if datos:
-                    decision = input("¿Sobrescribir inventario? (S/N): ").lower()
+                if data:
+                    decision = input("Overwrite current inventory? (Y/N): ").lower()
 
-                    if decision == "s":
-                        inventario.clear()
-                        inventario.extend(datos)
-                        print("Inventario reemplazado")
+                    if decision == "y":
+                        inventory.clear()
+                        inventory.extend(data)
+                        print("Inventory replaced")
                     else:
-                        for nuevo in datos:
-                            existente = buscar_producto(inventario, nuevo["nombre"])
-                            if existente:
-                                existente["cantidad"] += nuevo["cantidad"]
-                                existente["precio"] = nuevo["precio"]
+                        for new in data:
+                            existing = search_product(inventory, new["name"])
+                            if existing:
+                                existing["quantity"] += new["quantity"]
+                                existing["price"] = new["price"]
                             else:
-                                inventario.append(nuevo)
-                        print("Inventario fusionado")
+                                inventory.append(new)
+                        print("Inventory merged")
 
-                    print(f"Filas inválidas omitidas: {errores}")
+                    print(f"Invalid rows skipped: {errors}")
 
-            elif opcion == "9":
-                continuar = False
+            elif option == "9":
+                running = False
 
             else:
-                print("Opción inválida")
+                print("Invalid option")
 
         except Exception as e:
             print(f"Error: {e}")
