@@ -69,3 +69,4 @@ Repository Structure
 ├── inventory_csv/          # Inventory with CSV persistence
 ├── shopping_cart/          # Riwistore shopping cart
 └── README.md               # Main repository documentation
+# modulo_1.html
