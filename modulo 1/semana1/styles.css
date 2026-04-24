@@ -507,7 +507,7 @@ footer {
     flex-direction: column;
     gap: 0.625rem;
   }
-
+  
   /* Proyectos a 1 columna */
   .grid-proyectos {
     grid-template-columns: 1fr;
