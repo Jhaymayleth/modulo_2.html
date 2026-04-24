@@ -14,17 +14,19 @@
 
 <body>
 
-  <!-- ENCABEZADO -->
+  <!-- HEADER con Flexbox -->
   <header class="header">
     <h1>Mis Mascotas</h1>
     <nav>
-      <!-- Enlace para volver al portafolio -->
       <a href="index.html" class="enlace-volver">← Volver al portafolio</a>
     </nav>
   </header>
 
-  <!-- GALERÍA DE MASCOTAS -->
-  <section class="galeria">
+  <!-- 
+    GALERÍA DE MASCOTAS
+    Usamos Flexbox (flex-wrap) para distribuir las tarjetas en filas
+  -->
+  <section class="galeria-flex">
 
     <!-- Mascota 1 -->
     <article class="tarjeta-mascota">
@@ -47,6 +49,55 @@
       <p>Fuerte y protector. Cuida a toda la familia con mucho cariño.</p>
     </article>
 
+    <!-- Mascota 4 -->
+    <article class="tarjeta-mascota">
+      <img src="img/mascota4.jpg" alt="Foto de Milo">
+      <h3>Milo</h3>
+      <p>Curioso y aventurero. Siempre explorando cada rincón de la casa.</p>
+    </article>
+
+    <!-- Mascota 5 -->
+    <article class="tarjeta-mascota">
+      <img src="img/mascota5.jpg" alt="Foto de Bella">
+      <h3>Bella</h3>
+      <p>Cariñosa y leal. Le encanta estar cerca de las personas.</p>
+    </article>
+
+    <!-- Mascota 6 -->
+    <article class="tarjeta-mascota">
+      <img src="img/mascota6.jpg" alt="Foto de Toby">
+      <h3>Toby</h3>
+      <p>Dormilón y glotón. Su lugar favorito es al lado del plato de comida.</p>
+    </article>
+
+  </section>
+
+  <!-- 
+    MOSAICO CON CSS GRID
+    Otra forma de mostrar las mascotas usando grid-template-columns
+  -->
+  <section class="seccion">
+    <h2>Mosaico de fotos</h2>
+    <div class="mosaico-grid">
+      <div class="mosaico-item item-grande">
+        <img src="img/mascota1.jpg" alt="Max">
+      </div>
+      <div class="mosaico-item">
+        <img src="img/mascota2.jpg" alt="Luna">
+      </div>
+      <div class="mosaico-item">
+        <img src="img/mascota3.jpg" alt="Rocky">
+      </div>
+      <div class="mosaico-item">
+        <img src="img/mascota4.jpg" alt="Milo">
+      </div>
+      <div class="mosaico-item item-ancho">
+        <img src="img/mascota5.jpg" alt="Bella">
+      </div>
+      <div class="mosaico-item">
+        <img src="img/mascota6.jpg" alt="Toby">
+      </div>
+    </div>
   </section>
 
   <!-- PIE DE PÁGINA -->

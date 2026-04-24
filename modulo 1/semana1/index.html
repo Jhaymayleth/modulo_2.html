@@ -14,7 +14,7 @@
 
 <body>
 
-  <!-- ENCABEZADO con nombre y menú de navegación -->
+  <!-- HEADER con Flexbox para alinear y distribuir -->
   <header class="header">
     <h1 class="logo">Jose Mauricio Rangel Nuñez</h1>
     <nav>
@@ -27,7 +27,7 @@
     </nav>
   </header>
 
-  <!-- SECCIÓN PRINCIPAL / HERO -->
+  <!-- SECCIÓN HERO -->
   <section class="hero">
     <h2>Construyendo ideas digitales</h2>
     <p>Desarrollo web | Emprendimiento | Innovación</p>
@@ -36,34 +36,61 @@
   <!-- SECCIÓN SOBRE MÍ -->
   <section id="sobre-mi" class="seccion">
     <h2>Sobre mí</h2>
-    <p>
-      Soy estudiante y emprendedor apasionado por la tecnología.
-      Me enfoco en crear soluciones prácticas, páginas web modernas
-      y proyectos con impacto real. Actualmente estoy aprendiendo
-      HTML, CSS y poco a poco JavaScript.
-    </p>
+    <div class="sobre-mi-contenido">
+      <p>
+        Soy estudiante y emprendedor apasionado por la tecnología.
+        Me enfoco en crear soluciones prácticas, páginas web modernas
+        y proyectos con impacto real. Actualmente estoy aprendiendo
+        HTML, CSS y poco a poco JavaScript.
+      </p>
+      <p>
+        Mi objetivo es seguir creciendo como desarrollador y poder
+        ayudar a negocios a tener presencia en internet con diseños
+        modernos y funcionales.
+      </p>
+    </div>
   </section>
 
-  <!-- SECCIÓN PROYECTOS con lista de enlaces -->
+  <!-- SECCIÓN PROYECTOS organizada con CSS Grid -->
   <section id="proyectos" class="seccion">
     <h2>Proyectos</h2>
-    <ul class="lista-proyectos">
-      <li>
-        <a href="#">Tienda Online</a>
+    <!-- Contenedor grid para las tarjetas de proyectos -->
+    <div class="grid-proyectos">
+
+      <div class="tarjeta-proyecto">
+        <h3><a href="#">Tienda Online</a></h3>
         <p>Plataforma de ventas digital para pequeños negocios.</p>
-      </li>
-      <li>
-        <a href="#">App de Tareas</a>
+      </div>
+
+      <div class="tarjeta-proyecto">
+        <h3><a href="#">App de Tareas</a></h3>
         <p>Gestión de productividad personal con lista de pendientes.</p>
-      </li>
-      <li>
-        <a href="#">Web Empresarial</a>
+      </div>
+
+      <div class="tarjeta-proyecto">
+        <h3><a href="#">Web Empresarial</a></h3>
         <p>Diseño moderno para un negocio local.</p>
-      </li>
-    </ul>
+      </div>
+
+      <div class="tarjeta-proyecto">
+        <h3><a href="#">Blog Personal</a></h3>
+        <p>Espacio para compartir artículos sobre tecnología.</p>
+      </div>
+
+      <div class="tarjeta-proyecto">
+        <h3><a href="#">Landing Page</a></h3>
+        <p>Página de aterrizaje para campañas de marketing.</p>
+      </div>
+
+      <div class="tarjeta-proyecto">
+        <h3><a href="#">Portafolio</a></h3>
+        <p>Este mismo sitio web que estás viendo ahora.</p>
+      </div>
+
+    </div>
   </section>
 
-  <!-- SECCIÓN CONTACTO con formulario -->
+  <!-- SECCIÓN CONTACTO -->
   <section id="contacto" class="seccion">
     <h2>Contacto</h2>
     <form class="formulario">

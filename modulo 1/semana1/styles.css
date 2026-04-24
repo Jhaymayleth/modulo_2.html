@@ -19,9 +19,13 @@ body {
   line-height: 1.6;
 }
 
-/* ===========================
-   ENCABEZADO (HEADER)
-   =========================== */
+/* ==============================================
+   HEADER CON FLEXBOX (TASK 2)
+   - display: flex para hacer contenedor flexible
+   - justify-content: space-between distribuye
+     el logo a la izquierda y nav a la derecha
+   - align-items: center centra verticalmente
+   ============================================== */
 .header {
   display: flex;
   justify-content: space-between;
@@ -29,6 +33,8 @@ body {
   padding: 20px 30px;
   background-color: #1e293b;
   border-bottom: 2px solid #38bdf8;
+  /* flex-wrap para que en pantallas chicas se acomode */
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -36,11 +42,19 @@ body {
   font-weight: 700;
 }
 
-/* Menú de navegación */
+/* ==============================================
+   NAVEGACIÓN CON FLEXBOX
+   - display: flex en la lista para poner los
+     links uno al lado del otro
+   - gap: espacio entre cada link
+   - align-items: center para centrar verticalmente
+   ============================================== */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 15px;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 /* ===========================
@@ -52,12 +66,12 @@ a {
   transition: color 0.3s;
 }
 
-/* Efecto hover: cambia de color al pasar el mouse */
+/* Efecto hover: cambia color al pasar el mouse */
 a:hover {
   color: #7dd3fc;
 }
 
-/* Enlace de volver en la página de mascotas */
+/* Enlace de volver en mascotas.html */
 .enlace-volver {
   font-weight: 500;
   padding: 8px 16px;
@@ -72,9 +86,15 @@ a:hover {
 }
 
 /* ===========================
-   SECCIÓN HERO (PRESENTACIÓN)
+   SECCIÓN HERO
+   Usando flexbox para centrar
    =========================== */
 .hero {
+  /* Flexbox para centrar todo el contenido */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 80px 20px;
   background-color: #0f172a;
@@ -98,12 +118,11 @@ a:hover {
   margin: 25px 30px;
   padding: 30px;
   border-radius: 12px;
-  /* Sombra para dar profundidad */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .seccion h2 {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 1.5rem;
   color: #38bdf8;
 }
@@ -112,44 +131,60 @@ a:hover {
   color: #cbd5e1;
 }
 
-/* ===========================
-   LISTA DE PROYECTOS
-   =========================== */
-.lista-proyectos {
-  list-style: none;
+/* ==============================================
+   SOBRE MÍ CON FLEXBOX
+   - flex-direction: column para apilar párrafos
+   - gap para separar los párrafos
+   ============================================== */
+.sobre-mi-contenido {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.lista-proyectos li {
+/* ==============================================
+   PROYECTOS CON CSS GRID (TASK 3)
+   - display: grid activa el grid layout
+   - grid-template-columns: repeat(3, 1fr) crea 
+     3 columnas del mismo tamaño
+   - gap: espacio entre las tarjetas
+   ============================================== */
+.grid-proyectos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tarjeta-proyecto {
   background-color: #334155;
   padding: 20px;
   border-radius: 10px;
-  flex: 1;
-  min-width: 200px;
   transition: transform 0.3s;
 }
 
 /* Efecto hover en los proyectos */
-.lista-proyectos li:hover {
+.tarjeta-proyecto:hover {
   transform: translateY(-5px);
 }
 
-.lista-proyectos li a {
-  font-size: 1.2rem;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 8px;
+.tarjeta-proyecto h3 {
+  margin-bottom: 10px;
 }
 
-.lista-proyectos li p {
+.tarjeta-proyecto h3 a {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.tarjeta-proyecto p {
   font-size: 0.9rem;
   color: #94a3b8;
 }
 
 /* ===========================
    FORMULARIO DE CONTACTO
+   Usando flexbox para apilar
+   los campos verticalmente
    =========================== */
 .formulario {
   display: flex;
@@ -169,7 +204,6 @@ a:hover {
   font-size: 0.9rem;
 }
 
-/* Cambio de borde al enfocar un campo */
 .formulario input:focus,
 .formulario textarea:focus {
   outline: none;
@@ -193,14 +227,19 @@ a:hover {
   background-color: #0ea5e9;
 }
 
-/* ===========================
-   GALERÍA DE MASCOTAS
-   =========================== */
-.galeria {
+/* ==============================================
+   GALERÍA DE MASCOTAS CON FLEXBOX (TASK 4)
+   - display: flex activa flexbox
+   - flex-wrap: wrap permite que las tarjetas
+     salten a la siguiente fila si no caben
+   - justify-content: center las centra
+   - gap: espacio entre tarjetas
+   ============================================== */
+.galeria-flex {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
-  flex-wrap: wrap;
   padding: 40px 30px;
 }
 
@@ -209,7 +248,10 @@ a:hover {
   padding: 20px;
   border-radius: 12px;
   text-align: center;
-  width: 260px;
+  /* flex-basis para controlar el ancho de cada tarjeta */
+  flex-basis: 280px;
+  /* No dejar que crezcan demasiado */
+  flex-grow: 0;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s;
 }
@@ -229,11 +271,55 @@ a:hover {
   font-size: 0.9rem;
 }
 
+/* ==============================================
+   MOSAICO CON CSS GRID (TASK 4)
+   - grid-template-columns: repeat(3, 1fr) crea
+     3 columnas iguales
+   - grid-area se usa para hacer que algunas
+     imágenes ocupen más espacio
+   - gap separa los elementos
+   ============================================== */
+.mosaico-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.mosaico-item {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Imagen grande que ocupa 2 filas */
+.item-grande {
+  grid-row: span 2;
+}
+
+/* Imagen ancha que ocupa 2 columnas */
+.item-ancho {
+  grid-column: span 2;
+}
+
+/* Las imágenes del mosaico se adaptan a su contenedor */
+.mosaico-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+}
+
+.mosaico-item img:hover {
+  transform: scale(1.05);
+}
+
 /* ===========================
-   IMÁGENES
+   IMÁGENES DE TARJETAS
    Borde redondeado y sombra
    =========================== */
-img {
+.tarjeta-mascota img {
   width: 220px;
   height: 200px;
   object-fit: cover;
@@ -242,10 +328,13 @@ img {
 }
 
 /* ===========================
-   PIE DE PÁGINA (FOOTER)
+   PIE DE PÁGINA
+   Usando flexbox para centrar
    =========================== */
 footer {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 25px;
   color: #64748b;
   font-size: 0.85rem;
@@ -253,11 +342,14 @@ footer {
   margin-top: 20px;
 }
 
-/* ===========================
+/* ==============================================
    RESPONSIVE
-   Para pantallas pequeñas
-   =========================== */
-@media (max-width: 600px) {
+   En pantallas chicas cambiamos las columnas
+   del grid y ajustamos el flexbox
+   ============================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
   .header {
     flex-direction: column;
     gap: 15px;
@@ -265,20 +357,50 @@ footer {
   }
 
   .nav-links {
-    flex-wrap: wrap;
     justify-content: center;
   }
 
+  /* Grid de proyectos pasa a 2 columnas */
+  .grid-proyectos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Mosaico pasa a 2 columnas */
+  .mosaico-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .hero h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  /* Grid de proyectos pasa a 1 columna */
+  .grid-proyectos {
+    grid-template-columns: 1fr;
   }
 
-  .lista-proyectos {
-    flex-direction: column;
+  /* Mosaico pasa a 1 columna */
+  .mosaico-grid {
+    grid-template-columns: 1fr;
   }
 
-  .galeria {
-    flex-direction: column;
-    align-items: center;
+  /* Quitar span en pantallas chicas */
+  .item-grande {
+    grid-row: span 1;
+  }
+
+  .item-ancho {
+    grid-column: span 1;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .galeria-flex {
+    padding: 20px 15px;
   }
 }
